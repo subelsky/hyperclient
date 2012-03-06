@@ -45,13 +45,17 @@ pp orders_resource.links
 # {:self => "https://api.example.com/orders",
 #  :next => "https://api.example.com/orders/page/2"}
 
-pp orders_resource.objects
-# [{:id => 50, :item_name => "R2 Motivator"},
-   {:id => 51, :item_name => "Hydrospanner"}]
+# some servers may return embedded objects
+orders_resource.objects.each { |l| puts l.class => l.attributes }
+# [Hyperclient::Resource => {:id => 50, :item_name => "R2 Motivator", :created_at => "2012-02-03 12:15:02 -0400"},
+#  Hyperclient::Resource => {:id => 51, :item_name => "Hydrospanner", :created_at => "2012-02-04 13:18:12 -0500"}]
 
 order_resource = orders_resource.post({ item_name: "Droid Coolant" })
 pp order_resource.location
 # "https://api.example.com/orders/52"
+
+pp order_resource.attributes
+# {:id => 52, :item_name => "Droid Coolant", :created_at => "2012-03-05 21:31:04 -0500"}
 ```
 
 ## Contributing
