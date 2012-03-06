@@ -1,6 +1,6 @@
 # Hyperclient
 
-_NOTE_: The code isn't written yet. I'm trying out "README Driven Development" and looking for feedback on the API below.
+_NOTE: The code isn't written yet. I'm trying out "README Driven Development" and looking for feedback on the API below._
 
 This gem aims to explore and demonstrate how to write a client for [hypermedia APIs](http://blog.steveklabnik.com/posts/2012-02-23-rest-is-over), formerly
 known as REST interfaces that respect the [HATEOAS constraint](http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven).
