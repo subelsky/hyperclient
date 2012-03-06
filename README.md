@@ -36,26 +36,21 @@ resource.links.each { |l| puts(l.relation => l.uri) }
 # {:orders => "https://api.example.com/orders"}
 # {:customers => "https://api.example.com/customers"}
 
-order_link = resource.find_link(:orders)
-actions = order_link.actions # calls HTTP OPTIONS to get permissible verbs
-pp actions
-# [:get,:post]
-
 # since we're at the root level of this API we haven't drilled into any objects yet
 pp resource.objects
 # []
 
-orders = order_link.get # returns another Hyperclient::Resource
-pp orders.links
+orders_resource = resource[:orders].get
+pp orders_resource.links
 # {:self => "https://api.example.com/orders",
-#  :next => "https://api.example.com/orders?page=2&per_page=2"}
+#  :next => "https://api.example.com/orders/page/2"}
 
-pp orders.objects
+pp orders_resource.objects
 # [{:id => 50, :item_name => "R2 Motivator"},
    {:id => 51, :item_name => "Hydrospanner"}]
 
-order = orders.post({ item_name: "Droid Coolant" })
-puts order.location
+order_resource = orders_resource.post({ item_name: "Droid Coolant" })
+pp order_resource.location
 # "https://api.example.com/orders/52"
 ```
 
