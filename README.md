@@ -58,6 +58,11 @@ pp order_resource.attributes
 # {:id => 52, :item_name => "Droid Coolant", :created_at => "2012-03-05 21:31:04 -0500"}
 ```
 
+## Hypermedia Reading List
+
+Steve Klabnik has a [great set of links](http://blog.steveklabnik.com/posts/2012-02-27-hypermedia-api-reading-list)
+to get you started.
+
 ## Contributing
 
 1. Fork it
